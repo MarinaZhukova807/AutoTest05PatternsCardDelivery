@@ -67,11 +67,6 @@ class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         SelenideElement form = $("form");
         form.$("[data-test-id=city] input").setValue(validUser.getCity());
         form.$("[data-test-id=date] input").sendKeys(Keys.CONTROL + "a");
@@ -221,7 +216,7 @@ class DeliveryTest {
         $("[data-test-id=phone].input_invalid .input__sub").shouldHave(exactText("Поле обязательно для заполнения"));
     }
     /*@Test
-    //в этой версии приложения отсутствует проверка на корректность телефона
+    //Заведен дефект https://github.com/MarinaZhukova807/AutoTest05PatternsCardDelivery/issues/1#issue-1361030506
     void setErrorPhoneFormat(){
         var daysToAddForFirstMeeting = 4;
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
